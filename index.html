@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>İyi günler Semih</title>
+  <link rel="stylesheet" href="node_modules/@fontsource-variable/geist/index.css" />
+  <link rel="stylesheet" href="node_modules/@fontsource-variable/inter/index.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Subtle Hover Window Controls (top-right corner) -->
+    <div class="win-controls" aria-label="Pencere kontrolleri">
+      <button id="btnMin" class="win-btn" title="Küçült" aria-label="Küçült">–</button>
+      <button id="btnMax" class="win-btn" title="Büyüt / Geri Yükle" aria-label="Büyüt">□</button>
+      <button id="btnClose" class="win-btn close" title="Kapat" aria-label="Kapat">×</button>
+    </div>
+
+    <div class="layout-frame">
+      <!-- Left Vertical Sidebar Rail (No Logo) -->
+      <aside class="sidebar" aria-label="Ana menü">
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-nav="dashboard" title="Genel Bakış" aria-label="Genel Bakış">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="6.5" height="6.5" rx="1.6" fill="currentColor" stroke="none"></rect>
+              <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6" fill="currentColor" stroke="none"></rect>
+              <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6" fill="currentColor" stroke="none"></rect>
+              <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6" fill="currentColor" stroke="none"></rect>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-nav="team" title="Ekip" aria-label="Ekip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="3.5"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a3.5 3.5 0 0 1 0 6.74"></path>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-nav="agents" title="Asistanlar" aria-label="Asistanlar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="7.5"></circle>
+              <path d="M12 8.5v7"></path>
+              <path d="M8.5 12h7"></path>
+              <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-nav="calendar" title="Takvim" aria-label="Takvim">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3.5" y="5" width="17" height="15.5" rx="3"></rect>
+              <path d="M8 3v4M16 3v4M3.5 10h17"></path>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-nav="settings" title="Ayarlar" aria-label="Ayarlar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </nav>
+
+        <button class="profile-avatar" title="Semih" aria-label="Profil">
+          <span>S</span>
+        </button>
+      </aside>
+
+      <!-- Main Workspace Column -->
+      <div class="workspace-col">
+        <!-- Top Header -->
+        <header class="top-header">
+          <div class="greeting-block">
+            <span id="headerDate" class="header-date">Perşembe, 12 Kasım</span>
+            <h1 class="header-title">İyi günler Semih</h1>
+          </div>
+
+          <div class="header-actions">
+            <div class="search-wrap">
+              <label class="search-pill" for="searchInput">
+                <svg class="search-spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2.5C12.7 7.8 16.2 11.3 21.5 12C16.2 12.7 12.7 16.2 12 21.5C11.3 16.2 7.8 12.7 2.5 12C7.8 11.3 11.3 7.8 12 2.5Z"></path>
+                </svg>
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Herhangi bir şey sor..."
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <kbd class="shortcut-badge">⌘K</kbd>
+              </label>
+
+              <!-- Search Suggestions & Atlas Inline Response Popover (Hidden until focus) -->
+              <div id="searchPopover" class="search-popover" hidden>
+                <div id="searchSuggestView" class="search-suggest-view">
+                  <div class="search-pop-label">Önerilen</div>
+                  <button class="search-suggest-item" type="button" data-query="blocked">
+                    <span class="suggest-ico">?</span>
+                    <span>Bugün neler engellendi?</span>
+                  </button>
+                  <button class="search-suggest-item" type="button" data-query="yesterday">
+                    <span class="suggest-ico">≡</span>
+                    <span>Dünü özetle</span>
+                  </button>
+                  <button class="search-suggest-item" type="button" data-query="cash">
+                    <span class="suggest-ico">↗</span>
+                    <span>Gelecek ayın nakit akışını göster</span>
+                  </button>
+                </div>
+
+                <div id="searchAnswerView" class="search-answer-view" hidden>
+                  <div class="answer-head">
+                    <div class="answer-brand">
+                      <span class="atlas-orb mini" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 3.2C12.6 8.1 15.9 11.4 20.8 12C15.9 12.6 12.6 15.9 12 20.8C11.4 15.9 8.1 12.6 3.2 12C8.1 11.4 11.4 8.1 12 3.2Z"></path>
+                        </svg>
+                      </span>
+                      <strong>Atlas</strong>
+                    </div>
+                    <span id="answerTime" class="answer-time">Az önce</span>
+                  </div>
+                  <p id="answerText" class="answer-text"></p>
+                  <div id="answerRows" class="answer-rows"></div>
+                  <button id="answerCtaBtn" class="answer-cta-btn" type="button">Hukuk Asistanına Sor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="notif-wrap">
+              <button id="notifBtn" class="notif-btn" title="Bildirimler" aria-label="Bildirimler" aria-expanded="false">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 3a6 6 0 0 0-6 6v3.76l-1.45 2.42A1 1 0 0 0 5.4 16.7h13.2a1 1 0 0 0 .85-1.52L18 12.76V9a6 6 0 0 0-6-6zm0 18a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 21z"></path>
+                </svg>
+                <span id="notifDot" class="notif-dot"></span>
+              </button>
+
+              <div id="notifPopover" class="notif-popover" hidden>
+                <div class="notif-pop-head">
+                  <span>Bildirimler</span>
+                  <button id="markReadBtn" class="notif-clear" type="button">Okundu say</button>
+                </div>
+                <div class="notif-item">
+                  <span class="notif-bullet"></span>
+                  <div>
+                    <strong>Yeni bildirim yok</strong>
+                    <p>Çalışma alanı hazır bekliyor.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Canvas Area -->
+        <main class="dashboard-canvas" aria-label="Ana çalışma alanı">
+          <!-- Top Grid Row (Left Wide Atlas Card + Right Approval Slot) -->
+          <section class="top-row-grid">
+            <article class="brief-card" aria-label="Atlas Sabah Özeti">
+              <div class="brief-head">
+                <div class="brief-identity">
+                  <div class="atlas-orb" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 3.2C12.6 8.1 15.9 11.4 20.8 12C15.9 12.6 12.6 15.9 12 20.8C11.4 15.9 8.1 12.6 3.2 12C8.1 11.4 11.4 8.1 12 3.2Z"></path>
+                    </svg>
+                  </div>
+                  <div class="brief-meta">
+                    <span class="brief-brand">Atlas</span>
+                    <span class="brief-time">Sabah özeti · 07:30</span>
+                  </div>
+                </div>
+
+                <button id="talkAtlasBtn" class="talk-btn" type="button">
+                  <span class="voice-wave" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </span>
+                  <span id="talkAtlasLabel">Atlas ile konuş</span>
+                </button>
+              </div>
+
+              <p id="briefBody" class="brief-body">
+                Bugün ilgilenmen gereken üç konu var. Gece iki anlaşma kapandı ve 4. çeyrek pazarlama bütçesi onayını bekliyor.
+              </p>
+
+              <div class="brief-footer">
+                <div class="brief-chips">
+                  <button class="brief-chip" type="button" data-prompt="blocked">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 2.5L4.5 5.6v5.7c0 4.8 3.2 9.2 7.5 10.4 4.3-1.2 7.5-5.6 7.5-10.4V5.6L12 2.5zm0 5.4a1 1 0 0 1 1 1v3.6a1 1 0 1 1-2 0V8.9a1 1 0 0 1 1-1zm0 8.2a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3z"></path>
+                    </svg>
+                    <span>Neler engellendi?</span>
+                  </button>
+
+                  <button class="brief-chip" type="button" data-prompt="yesterday">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M6 3.5h9l4.5 4.5V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2zm8.5 1.8V8.5h3.2L14.5 5.3zM7.5 12a.9.9 0 0 0 0 1.8h9a.9.9 0 0 0 0-1.8h-9zm0 3.6a.9.9 0 0 0 0 1.8h6.2a.9.9 0 0 0 0-1.8H7.5z"></path>
+                    </svg>
+                    <span>Dünü özetle</span>
+                  </button>
+
+                  <button class="brief-chip" type="button" data-prompt="weekly">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="4" y="5" width="16" height="15" rx="2.5"></rect>
+                      <path d="M8 3.2v3.3M16 3.2v3.3M4 9.5h16"></path>
+                      <path d="M8.5 13.5h2M13.5 13.5h2M8.5 16.8h4"></path>
+                    </svg>
+                    <span>Haftalık rapor</span>
+                  </button>
+                </div>
+
+                <button id="readFullBriefBtn" class="read-brief-link" type="button">
+                  <span>Tam özeti oku</span>
+                  <span class="link-arrow" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Needs Your Approval Card -->
+            <article class="approval-card" aria-label="Onayını bekleyenler">
+              <div class="approval-head">
+                <div class="approval-title-group">
+                  <h2>Onayını bekleyenler</h2>
+                  <span id="approvalCount" class="approval-badge">3</span>
+                </div>
+                <button id="viewAllApprovals" class="text-link-muted" type="button">Tümünü gör</button>
+              </div>
+
+              <div class="approval-item-box">
+                <div class="approval-item-top">
+                  <div class="approval-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M7 3.5h7.5L19 8v11.5a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 19.5V5A1.5 1.5 0 0 1 7.5 3.5zm6.5 1.8V9h3.7l-3.7-3.7zM9 12.2a.8.8 0 0 0 0 1.6h6a.8.8 0 0 0 0-1.6H9zm0 3.2a.8.8 0 0 0 0 1.6h4.2a.8.8 0 0 0 0-1.6H9z"></path>
+                    </svg>
+                  </div>
+                  <div class="approval-item-info">
+                    <h3 id="approvalTitle">4. Çeyrek pazarlama bütçesi</h3>
+                    <p id="approvalMeta">$12.400 · Finans Asistanı · son 12:00</p>
+                  </div>
+                </div>
+
+                <div class="approval-insight">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3z"></path>
+                  </svg>
+                  <span id="approvalInsight">Geçen çeyrekten %18 düşük · %94 emin</span>
+                </div>
+
+                <div class="approval-actions">
+                  <button id="approveBtn" class="btn-solid-dark" type="button">Onayla</button>
+                  <button id="reviewBtn" class="btn-soft-light" type="button">İncele</button>
+                </div>
+              </div>
+
+              <button id="nextApprovalBtn" class="approval-foot" type="button">
+                <span id="approvalMore">2 diğer · Tedarikçi sözleşmesi, Yeni işe alım teklifi</span>
+                <span class="link-arrow" aria-hidden="true">→</span>
+              </button>
+            </article>
+          </section>
+
+          <!-- Middle Grid Row: Two Gradient KPI Cards + Schedule Timeline -->
+          <section class="mid-row-grid">
+            <div class="kpi-pair">
+              <!-- Business Health Card -->
+              <article class="kpi-card kpi-green" aria-label="İşletme sağlığı">
+                <div class="kpi-top">
+                  <span class="kpi-pill">İşletme sağlığı</span>
+                  <button class="kpi-arrow-btn" type="button" title="Detaylar" aria-label="İşletme sağlığı detayları">↗</button>
+                </div>
+
+                <div class="kpi-center">
+                  <div id="healthDotMatrix" class="dot-matrix" aria-label="82"></div>
+                  <div class="kpi-status-row">
+                    <span class="kpi-status-pill">Yolunda</span>
+                    <span class="kpi-status-note">+4 bu hafta</span>
+                  </div>
+                </div>
+
+                <div id="healthTicks" class="kpi-ticks" aria-hidden="true"></div>
+              </article>
+
+              <!-- Cash Runway Card -->
+              <article class="kpi-card kpi-orange" aria-label="Nakit ömrü">
+                <div class="kpi-top">
+                  <span class="kpi-pill">Nakit ömrü</span>
+                  <button class="kpi-arrow-btn" type="button" title="Detaylar" aria-label="Nakit ömrü detayları">↗</button>
+                </div>
+
+                <div class="kpi-center">
+                  <div id="runwayDotMatrix" class="dot-matrix" aria-label="14"></div>
+                  <div class="kpi-status-row">
+                    <span class="kpi-status-pill">Sağlıklı</span>
+                    <span class="kpi-status-note">ay kaldı</span>
+                  </div>
+                </div>
+
+                <div id="runwayTicks" class="kpi-ticks" aria-hidden="true"></div>
+              </article>
+            </div>
+
+            <!-- Schedule Card -->
+            <article class="schedule-card" aria-label="Program">
+              <div class="schedule-head">
+                <div>
+                  <h2>Program</h2>
+                  <p>Bugün · 3 toplantı · 1 tamamlandı</p>
+                </div>
+                <button class="outline-pill-btn" type="button">Takvimi aç</button>
+              </div>
+
+              <div class="timeline-wrap">
+                <div class="now-marker" style="left: 36.5%;">
+                  <span class="now-badge">Şimdi 11:47</span>
+                  <span class="now-line"></span>
+                </div>
+
+                <div class="timeline-events">
+                  <div class="tl-event tl-purple" style="left: 11%; width: 22%;">
+                    <span class="tl-bar"></span>
+                    <span>Yatırımcı görüşmesi</span>
+                    <div class="hover-card" role="tooltip">
+                      <strong>Yatırımcı görüşmesi</strong>
+                      <span>09:30 – 10:30 · Tamamlandı</span>
+                      <span>Google Meet · Atlas özeti hazır</span>
+                    </div>
+                  </div>
+                  <div class="tl-event tl-green" style="left: 50%; width: 21%;">
+                    <span class="tl-bar"></span>
+                    <span>Tasarım incelemesi</span>
+                    <div class="hover-card" role="tooltip">
+                      <strong>Tasarım incelemesi</strong>
+                      <span>13:30 – 14:30 · 41 dk içinde</span>
+                      <span>Ofis, Oda 4 · Sara, Mert +2</span>
+                    </div>
+                  </div>
+                  <div class="tl-event tl-amber" style="left: 76%; width: 19%;">
+                    <span class="tl-bar"></span>
+                    <span>Sara ile 1:1</span>
+                    <div class="hover-card" role="tooltip">
+                      <strong>Sara ile 1:1</strong>
+                      <span>16:00 – 16:45 · Planlandı</span>
+                      <span>Görüşme Odası 2 · Haftalık senk</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-axis">
+                  <div class="timeline-dots"></div>
+                  <div class="timeline-hours">
+                    <span>08:00</span>
+                    <span>10:00</span>
+                    <span>12:00</span>
+                    <span>14:00</span>
+                    <span>16:00</span>
+                    <span>18:00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="next-meeting-bar">
+                <div class="next-meeting-left">
+                  <span class="time-chip">13:30</span>
+                  <div class="next-meeting-meta">
+                    <strong>Sıradaki: Tasarım incelemesi</strong>
+                    <span>41 dk içinde · Ofis, Oda 4</span>
+                  </div>
+                </div>
+                <div class="next-meeting-right">
+                  <div class="avatar-stack">
+                    <span class="av av-s">S</span>
+                    <span class="av av-m">M</span>
+                    <span class="av av-plus">+2</span>
+                  </div>
+                  <button class="mini-circle-arrow" type="button" aria-label="Toplantıyı aç">→</button>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Bottom Grid Row: Today's Priorities + AI Team -->
+          <section class="bottom-row-grid">
+            <!-- Today's Priorities Card -->
+            <article class="priorities-card" aria-label="Bugünün öncelikleri">
+              <div class="section-card-head">
+                <div>
+                  <h2>Bugünün öncelikleri</h2>
+                  <p id="prioritiesSummary">1 / 4 tamamlandı · Atlas seçti</p>
+                </div>
+                <button class="outline-pill-btn" type="button">Tümünü gör</button>
+              </div>
+
+              <div class="priorities-list">
+                <div class="priority-row done" data-priority="0">
+                  <button class="priority-check" type="button" aria-label="Görev durumu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <div class="priority-copy">
+                    <strong>Kuzey Rüzgarı ortaklığını imzala</strong>
+                    <span>Hukuk · 09:40'ta tamamlandı</span>
+                  </div>
+                  <div class="priority-right">
+                    <span class="status-tag tag-done"><i></i>Tamamlandı</span>
+                  </div>
+                </div>
+
+                <div class="priority-row" data-priority="1">
+                  <button class="priority-check" type="button" aria-label="Görev durumu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <div class="priority-copy">
+                    <strong>Yatırımcı görüşmesi takibini gönder</strong>
+                    <span>Atlas · taslak hazır</span>
+                  </div>
+                  <div class="priority-right">
+                    <span class="status-tag tag-working"><i></i>Çalışıyor</span>
+                    <button class="row-action-btn dark" type="button">Aç</button>
+                  </div>
+                </div>
+
+                <div class="priority-row" data-priority="2">
+                  <button class="priority-check" type="button" aria-label="Görev durumu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <div class="priority-copy">
+                    <strong>1. Çeyrek işe alım planını incele</strong>
+                    <span>İK Asistanı · son tarih bugün</span>
+                  </div>
+                  <div class="priority-right">
+                    <span class="status-tag tag-review"><i></i>İnceleme</span>
+                    <button class="row-action-btn" type="button">Aç</button>
+                  </div>
+                </div>
+
+                <div class="priority-row" data-priority="3">
+                  <button class="priority-check" type="button" aria-label="Görev durumu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </button>
+                  <div class="priority-copy">
+                    <strong>Ofis taşınması için tedarikçi seç</strong>
+                    <span>Operasyon Asistanı · 2 seçenek</span>
+                  </div>
+                  <div class="priority-right">
+                    <span class="status-tag tag-decision"><i></i>Karar</span>
+                    <button class="row-action-btn" type="button">Karar ver</button>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- AI Team Card -->
+            <article class="ai-team-card" aria-label="Yapay zeka ekibi">
+              <div class="section-card-head">
+                <div>
+                  <h2>Yapay zeka ekibi</h2>
+                  <p>6 üzerinden 3 çalışıyor · 1 seni bekliyor</p>
+                </div>
+                <button class="outline-pill-btn" type="button">Ekip</button>
+              </div>
+
+              <div class="agents-row">
+                <div class="agent-card">
+                  <div class="agent-hover-card" role="tooltip">
+                    <div class="ahc-head"><span>Satış Asistanı</span><span>şimdi</span></div>
+                    <strong>12 e-postadan 10'u gönderildi</strong>
+                    <div class="ahc-progress"><span style="width: 82%"></span></div>
+                    <div class="ahc-sub">2 yanıt · 1 görüşme ayarlandı</div>
+                  </div>
+                  <div class="agent-top">
+                    <span class="agent-orb orb-green" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5 12.5l4-4 3.5 3.5L19 5.5v4h2V3h-6.5v2h3.1l-5.1 5.1L9 6.6 3.5 12.1 5 12.5z"></path>
+                      </svg>
+                    </span>
+                    <span class="status-tag tag-working"><i></i>Çalışıyor</span>
+                  </div>
+                  <div class="agent-meta">
+                    <strong>Satış</strong>
+                    <span>12 adayı takip ediyor</span>
+                  </div>
+                </div>
+
+                <div class="agent-card">
+                  <div class="agent-hover-card" role="tooltip">
+                    <div class="ahc-head"><span>Finans Asistanı</span><span>4 dk önce</span></div>
+                    <strong>3 bütçe kalemi analiz edildi</strong>
+                    <div class="ahc-progress"><span style="width: 100%; background: #818cf8"></span></div>
+                    <div class="ahc-sub">Onay bekliyor · $12.400</div>
+                  </div>
+                  <div class="agent-top">
+                    <span class="agent-orb orb-purple" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 4h7.5L19 8.5V19a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 19V5.5A1.5 1.5 0 0 1 7.5 4zm2 8.5h6v1.5H9v-1.5zm0 3.2h4v1.5H9v-1.5z"></path>
+                      </svg>
+                    </span>
+                    <span class="status-tag tag-approval"><i></i>Onay</span>
+                  </div>
+                  <div class="agent-meta">
+                    <strong>Finans</strong>
+                    <span>Seni bekliyor</span>
+                  </div>
+                </div>
+
+                <div class="agent-card agent-card-peek">
+                  <div class="agent-hover-card" role="tooltip">
+                    <div class="ahc-head"><span>Pazarlama Asistanı</span><span>şimdi</span></div>
+                    <strong>4 lansman içeriği hazırlanıyor</strong>
+                    <div class="ahc-progress"><span style="width: 65%; background: #fb923c"></span></div>
+                    <div class="ahc-sub">2 gönderi yayına hazır</div>
+                  </div>
+                  <div class="agent-top">
+                    <span class="agent-orb orb-orange" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 10v4h3.5l5.5 4V6L7.5 10H4zm12.5 2a3.5 3.5 0 0 0-1.8-3v6a3.5 3.5 0 0 0 1.8-3z"></path>
+                      </svg>
+                    </span>
+                    <span class="status-tag tag-working"><i></i>Çalışıyor</span>
+                  </div>
+                  <div class="agent-meta">
+                    <strong>Pazarlama</strong>
+                    <span>4 içerik hazırlanıyor</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Slide-Over Review Drawer (Hidden until "İncele" is clicked) -->
+    <div id="drawerBackdrop" class="drawer-backdrop" hidden></div>
+    <aside id="reviewDrawer" class="review-drawer" aria-label="Onay İnceleme Paneli" hidden>
+      <div class="drawer-top">
+        <span id="drawerStatusBadge" class="drawer-pill"><i></i>Onay bekliyor · 1 / 3</span>
+        <button id="closeDrawerBtn" class="drawer-close" type="button" aria-label="Kapat">×</button>
+      </div>
+
+      <div class="drawer-scroll">
+        <h2 id="drawerTitle" class="drawer-title">4. Çeyrek pazarlama bütçesi</h2>
+        <p id="drawerMeta" class="drawer-subtitle">Finans Asistanı istedi · son 12:00</p>
+
+        <div class="drawer-amount-row">
+          <strong id="drawerAmount" class="drawer-amount">$12.400</strong>
+          <div class="drawer-budget-note">
+            <span id="drawerDeltaPill" class="drawer-delta-pill">%18 daha az</span>
+            <span id="drawerSpendNote">%28 harcandı · $18.500</span>
+          </div>
+        </div>
+
+        <div class="drawer-box">
+          <div class="drawer-box-head">
+            <span class="drawer-why-title">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 3l1.7 5.3L19 10l-5.3 1.7L12 17l-1.7-5.3L5 10l5.3-1.7L12 3z"></path>
+              </svg>
+              Atlas neden öneriyor
+            </span>
+            <span id="drawerConfidence" class="drawer-conf">%94 emin</span>
+          </div>
+          <ul id="drawerReasons" class="drawer-reasons"></ul>
+        </div>
+
+        <div class="drawer-box">
+          <div class="drawer-box-head">
+            <span class="drawer-sec-title">Dağılım</span>
+          </div>
+          <div id="drawerStackedBar" class="drawer-stacked-bar"></div>
+          <div id="drawerBreakdown" class="drawer-breakdown"></div>
+        </div>
+
+        <div class="drawer-file-row">
+          <div class="drawer-file-left">
+            <span class="file-ico">📄</span>
+            <span id="drawerFileName">4c-pazarlama-butcesi.pdf</span>
+          </div>
+          <span id="drawerFileMeta" class="drawer-file-meta">2 sayfa</span>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <p class="drawer-foot-note">Atlas, ilgili asistana haber verip planı güncelleyecek.</p>
+        <div class="drawer-foot-actions">
+          <button id="drawerRejectBtn" class="drawer-btn-ghost danger" type="button">Reddet</button>
+          <div class="drawer-foot-right">
+            <button id="drawerEditBtn" class="drawer-btn-soft" type="button">Düzenle</button>
+            <button id="drawerApproveBtn" class="drawer-btn-approve" type="button">Onayla $12.400</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Bottom Approval Toast (Hidden until "Onayla" is clicked) -->
+    <div id="approvalToast" class="approval-toast" hidden>
+      <span class="toast-check">✓</span>
+      <span id="toastMessage">Onaylandı · $12.400</span>
+      <button id="toastUndoBtn" class="toast-undo" type="button">Geri Al</button>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
