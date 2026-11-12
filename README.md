@@ -79,5 +79,10 @@ atlas-dashboard-copy/
 ├── styles.css                 # Bento grid, mesh gradients, typography & animations
 ├── package.json               # Dependencies and Electron launch script
 ├── .gitignore
+├── LICENSE
 └── README.md
 ```
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).

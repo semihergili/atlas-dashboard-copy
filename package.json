@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Semih executive dashboard desktop shell built with Electron",
   "main": "main.js",
+  "license": "MIT",
   "scripts": {
     "start": "electron ."
   },
